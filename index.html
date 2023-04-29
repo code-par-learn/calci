@@ -23,10 +23,11 @@
             <button onclick="display(this.value)" value="8" id="8">8</button>
             <button onclick="display(this.value)" value="9" id="9">9</button>
             <button onclick="display(this.value)" value="." id="decimal">.</button>
-            <button onclick="display(this.value); operate(this.value);" value="+" id="add">+</button>
-            <button onclick="display(this.value); operate(this.value);" value="-" id="sub">-</button>
-            <button onclick="display(this.value); operate(this.value);" value="*" id="multi">*</button>
-            <button onclick="display(this.value); operate(this.value);" value="/"  id="divide">/</button>
+            <button onclick=" operate(this.value);" value="+" id="add">+</button>
+            <button onclick="operate(this.value);" value="-" id="sub">-</button>
+            <button onclick="operate(this.value);" value="*" id="multi">*</button>
+            <button onclick="operate(this.value);" value="/"  id="divide">/</button>
+            <button onclick="backSpace()" id="backspace"><-</button>
             <button onclick="clearAll()" value="C"  id="clear">C</button>
             <button  onclick="equal(this.value)" value="=" id="equal">=</button>
         </div>
