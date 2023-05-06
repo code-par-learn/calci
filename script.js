@@ -1,50 +1,91 @@
 let firstnum;
 let operator;
 let ans;
-let secondsign;
-let disp=document.querySelector('#display');
+let secondnum;
+let currentdisp=document.querySelector('.current');
+let predisp=document.querySelector(".pre");
+document.addEventListener("keydown",e=>{keypressed(e.key);});
+function keypressed(k){
+    if(k=="Control"||k=="Shift"){
+        return;
+    }
+    if(k=="Backspace"){
+        backSpace();
+    }
+    else{
+    if(k=="+"){
+        operate("+");
+    }
+    else if(k=="-"){
+        operate("-");
+    }
+    else if(k=="x"){
+        operate("*");
+    }
+    else if(k=="/"){
+        operate("÷");
+    }
+    else if(k=="="||k=="Enter"){
+        equal();
+    }
+    else{
+        if(ans==Number(currentdisp.textContent)||firstnum==currentdisp.textContent){
+            currentdisp.textContent="";
+        }
+        currentdisp.textContent+=k;
+        
+    }
+}
+}
 
 function display(val){ 
-    if(ans==Number(disp.textContent)||firstnum==disp.textContent){
-        disp.textContent="";
+    if(ans==Number(currentdisp.textContent)||firstnum==currentdisp.textContent){
+        currentdisp.textContent="";
     }
-    disp.textContent+=val;
-  
+    currentdisp.textContent+=val;
+    
+
 }
 function operate(sign){
     if(isEmpty(operator)){
     operator=sign;
-    firstnum=disp.textContent;
-   
-    console.log(firstnum);}
-    else{secondnum=disp.textContent;
-        disp.textContent="";
-        console.log(firstnum);
-        console.log(secondnum);
+    firstnum=currentdisp.textContent;
+    currentdisp.textContent="";
+    predisp.textContent=`${firstnum} ${operator}`;
+}
+    else{
+        secondnum=currentdisp.textContent;
+        firstnum=predisp.textContent.slice(0,-1);
         secondnum=Number(secondnum);
-    firstnum=Number(firstnum);
+        firstnum=Number(firstnum);
         if(operator=="+"){
             ans=add(firstnum,secondnum);
          }
          else if(operator=="-"){
              ans=sub(firstnum,secondnum);
          }
-         else if(operator=="*"){
+         else if(operator=="x"){
              ans=multiply(firstnum,secondnum);
          }
-         else{
+         else if(operator=="÷") {
              ans=divide(firstnum,secondnum);
          }
+         else{
+             console.log("you pressed a wrong key");
+         }
          if(!(Number.isInteger(ans))){
-        
-             let res=ans.toFixed(3);
-             disp.textContent=`${res}`;
+             ans=ans.toFixed(3);
+             predisp.textContent=`${ans} ${sign}`;
+             currentdisp.textContent=`${ans}`;
          }
          else{
-             disp.textContent=`${ans}`;
-             firstnum=ans;
+            predisp.textContent=`${ans} ${sign}`;
+            currentdisp.textContent=`${ans}`;
+            
          }
          operator=sign;
+
+         
     }
 }
 function isEmpty(val){
@@ -54,7 +95,8 @@ function isEmpty(val){
 
 function equal(){
     if(!(isEmpty(firstnum)&&isEmpty(secondnum))){
-    secondnum=disp.textContent;
+        firstnum=predisp.textContent.slice(0,-1);
+    secondnum=currentdisp.textContent;
     secondnum=Number(secondnum);
     firstnum=Number(firstnum);
     if(operator=="+"){
@@ -63,25 +105,31 @@ function equal(){
     else if(operator=="-"){
         ans=sub(firstnum,secondnum);
     }
-    else if(operator=="*"){
+    else if(operator=="x"){
         ans=multiply(firstnum,secondnum);
     }
-    else{
+    else if(operator=="÷") {
         ans=divide(firstnum,secondnum);
+    }
+    else{
+        console.log("you pressed a wrong key");
     }
     if(!(Number.isInteger(ans))){
         let res=ans.toFixed(3);
-        disp.textContent=`${res}`;
+        currentdisp.textContent=`${res}`;
+        predisp.textContent=`${firstnum} ${operator} ${secondnum} =`;
+        
     }
     else{
-        disp.textContent=`${ans}`;
+        currentdisp.textContent=`${ans}`;
+        predisp.textContent=`${firstnum} ${operator} ${secondnum} =`;
+        
     }
     
     firstnum=undefined;
   secondnum=undefined;
     ans=undefined;
-    sign=undefined;
-
+    operator=undefined;
     res=undefined;
     }
     else{
@@ -89,7 +137,8 @@ function equal(){
     }
 }
 function clearAll(){
-    disp.textContent="";
+    currentdisp.textContent="";
+    predisp.textContent="";
     firstnum=undefined;
   secondnum=undefined;
     ans=undefined;
@@ -97,7 +146,7 @@ function clearAll(){
 }
 
 function backSpace(){
-    disp.textContent=disp.textContent.slice(0,-1);
+    currentdisp.textContent=currentdisp.textContent.slice(0,-1);
 
 }
 

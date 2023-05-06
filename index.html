@@ -8,30 +8,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>welcome calaculator here</h1>
     <div class="container">
-        <div id="display"></div>
+        <div id="display">
+            <div class="pre"></div>
+            <div class="current"></div>
+        </div>
         <div id="panel">
-            <button onclick="display(this.value)" value="0" id="0">0</button>
-            <button onclick="display(this.value)" value="1" id="1">1</button>
-            <button onclick="display(this.value)" value="2" id="2">2</button>
-            <button onclick="display(this.value)" value="3" id="3">3</button>
-            <button onclick="display(this.value)" value="4" id="4">4</button>
-            <button onclick="display(this.value)" value="5"  id="5">5</button>
-            <button onclick="display(this.value)" value="6" id="6">6</button>
-            <button onclick="display(this.value)" value="7" id="7">7</button>
-            <button onclick="display(this.value)" value="8" id="8">8</button>
-            <button onclick="display(this.value)" value="9" id="9">9</button>
-            <button onclick="display(this.value)" value="." id="decimal">.</button>
-            <button onclick=" operate(this.value);" value="+" id="add">+</button>
-            <button onclick="operate(this.value);" value="-" id="sub">-</button>
-            <button onclick="operate(this.value);" value="*" id="multi">*</button>
-            <button onclick="operate(this.value);" value="/"  id="divide">/</button>
-            <button onclick="backSpace()" id="backspace"><-</button>
-            <button onclick="clearAll()" value="C"  id="clear">C</button>
-            <button  onclick="equal(this.value)" value="=" id="equal">=</button>
+            <button onclick="display(this.value)" value="7" id="nums">7</button>
+            <button onclick="display(this.value)" value="8" id="nums">8</button>
+            <button onclick="display(this.value)" value="9" id="nums">9</button>
+            <button onclick="operate(this.value);" value="÷" id="fucbtn">÷</button>
+            <button onclick="display(this.value)" value="4" id="nums">4</button>
+            <button onclick="display(this.value)" value="5" id="nums">5</button>
+            <button onclick="display(this.value)" value="6" id="nums">6</button>
+            <button onclick="operate(this.value);" value="x" id="fucbtn">x</button>
+            <button onclick="display(this.value)" value="1" id="nums">1</button>
+            <button onclick="display(this.value)" value="2" id="nums">2</button>
+            <button onclick="display(this.value)" value="3" id="nums">3</button>
+            <button onclick="operate(this.value)" value="-" id="fucbtn">-</button>
+            <button onclick="display(this.value)" value="." id="dot">.</button>
+            <button onclick="display(this.value)" value="0" id="nums">0</button>
+            <button  onclick="equal(this.value)" value="=" id="fucbtn">=</button>
+            <button onclick=" operate(this.value);" value="+" id="fucbtn">+</button>           
+            <button onclick="backSpace()" id="delete">Delete</button>
+            <button onclick="clearAll()" id="AC">AC</button>
         </div>
     </div>
+    <div class="footer"><p> Copyright © <a href="https://github.com/code-par-learn">code-par-learn</a> </p></div>
     
 </body>
 <script  src="script.js" defer="defer"></script>
